@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venue List</title>
+</head>
+<body>
+    {% for venue in venues %}
+  <h2>{{ venue.name }}</h2>
+  <p>Address: {{ venue.address }}</p>
+  <p>Capacity: {{ venue.capacity }}</p>
+  {% if venue.availability %}
+    <p>Availability: Available</p>
+  {% else %}
+    <p>Availability: Not Available</p>
+  {% endif %}
+  <a href="{% url 'venue_detail' venue.id %}">View Details</a>
+{% endfor %}
+</body>
+
+</html>

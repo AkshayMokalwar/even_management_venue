@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KK details</title>
+</head>
+<body>
+    
+
+    <h2>{{ venue.name }}</h2>
+<p>Address: {{ venue.address }}</p>
+<p>Capacity: {{ venue.capacity }}</p>
+{% if venue.availability %}
+  <p>Availability: Available</p>
+  <form action="{% url 'book_venue' 1 venue.id %}" method="post">
+    {% csrf_token %}
+    <label for="customer_name">Customer Name:</label>
+    <input type="text" id="customer_name" name="customer_name" required>
+    <label for="customer_email">Customer Email:</label>
+    <input type="email" id="customer_email" name="customer_email" required>
+    <button type="submit">Book Venue</button>
+  </form>
+{% else %}
+  <p>Availability: Not Available</p>
+{% endif %}
+
+</body>
+</html>

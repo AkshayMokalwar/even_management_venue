@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Create Event</title>
+</head>
+<body>
+    <h2>Book Venue</h2>
+<!--     
+<p>Event: {{ organizer.name }}</p>
+<p>Venue: {{ organizer.name }}</p> -->
+<p>Organizer: {{ organizer.name }}</p>
+<p>Organizer organization: {{ organizer.organization }}</p>
+<p>Organizer contact_details: {{ organizer.contact_details }}</p>
+
+ 
+
+<form action="{% url 'create_events' organizer.id %}" method="post">
+
+  {% csrf_token %}
+  <label for="event_name">Event Name:</label>
+  <input type="text" id="event_name" name="event_name" required>
+
+  <label for="description">description:</label>
+  <input type="text" id="description" name="description" required>
+  <button type="submit">Create Event</button>
+</form>
+    
+</body>
+</html>

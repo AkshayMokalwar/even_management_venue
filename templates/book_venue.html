@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book venue</title>
+</head>
+<body>
+    <h2>Book Venue</h2>
+<p>Event: {{ event.name }}</p>
+<p>Venue: {{ venue.name }}</p>
+<form action="{% url 'book_venue' event.id venue.id %}" method="post">
+  {% csrf_token %}
+  <label for="customer_name">Customer Name:</label>
+  <input type="text" id="customer_name" name="customer_name" required>
+  <label for="customer_email">Customer Email:</label>
+  <input type="email" id="customer_email" name="customer_email" required>
+  <button type="submit">Book Venue</button>
+</form>
+    
+</body>
+</html>
